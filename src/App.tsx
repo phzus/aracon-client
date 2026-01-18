@@ -1,0 +1,38 @@
+import { PropertyGrid } from './components/PropertyGrid';
+import { PropertyDetails } from './components/PropertyDetails';
+import './index.css';
+
+function App() {
+  // Get current path and query params
+  const path = window.location.pathname;
+  const params = new URLSearchParams(window.location.search);
+  const propertyId = params.get('id');
+
+  // Route based on URL
+  // If URL contains /imovel and has an id parameter, show property details
+  if (path.includes('/imovel') && propertyId) {
+    return (
+      <div className="ma:bg-slate-50 ma:min-h-screen">
+        <PropertyDetails id={propertyId} />
+      </div>
+    );
+  }
+
+  // If URL contains /imoveis or is at root, show property grid
+  if (path.includes('/imoveis') || path === '/') {
+    return (
+      <div className="ma:bg-slate-50 ma:min-h-screen">
+        <PropertyGrid />
+      </div>
+    );
+  }
+
+  // Default: show property grid
+  return (
+    <div className="ma:bg-slate-50 ma:min-h-screen">
+      <PropertyGrid />
+    </div>
+  );
+}
+
+export default App;

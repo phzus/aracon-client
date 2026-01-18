@@ -1,0 +1,72 @@
+﻿
+> client@0.0.0 build
+> tsc -b && vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32mÔ£ô[39m 82 modules transformed.
+node.exe : 
+[31mÔ£ù[39m Build 
+failed in 3.04s
+No linha:1 
+caractere:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: ([31mÔ£   
+ ù[39m Build fai    
+led in 3.04s:Str    
+ing) [], RemoteE    
+xception
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+[31merror during 
+build:
+[31m[vite:terser] 
+terser not found. 
+Since Vite v3, 
+terser has become an 
+optional dependency. 
+You need to install 
+it.[31m
+    at 
+loadTerserPath (file:
+///C:/Users/phmor/Doc
+uments/Programa%C3%A7
+%C3%A3o/Aracon/client
+/node_modules/vite/di
+st/node/chunks/config
+.js:32974:8)
+    at 
+Object.renderChunk (f
+ile:///C:/Users/phmor
+/Documents/Programa%C
+3%A7%C3%A3o/Aracon/cl
+ient/node_modules/vit
+e/dist/node/chunks/co
+nfig.js:33003:39)
+    at 
+Object.handler (file:
+///C:/Users/phmor/Doc
+uments/Programa%C3%A7
+%C3%A3o/Aracon/client
+/node_modules/vite/di
+st/node/chunks/config
+.js:33743:13)
+    at file:///C:/Use
+rs/phmor/Documents/Pr
+ograma%C3%A7%C3%A3o/A
+racon/client/node_mod
+ules/rollup/dist/es/s
+hared/node-entry.js:2
+2571:40[39m

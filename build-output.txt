@@ -1,0 +1,147 @@
+﻿
+> client@0.0.0 build
+> tsc -b && vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+node.exe : Error: The 
+prefix "ma-" is invalid. 
+Prefixes must be lowercase 
+ASCII letters (a-z) only.
+No linha:1 caractere:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Error  
+  : The pref...ers (a-z)    
+ only.:String) [], Remot    
+eException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+    at C:\Users\phmor\Docume
+nts\Programa├º├úo\Aracon\cli
+ent\node_modules\tailwindcss
+\dist\lib.js:32:7065
+    at Rr (C:\Users\phmor\Do
+cuments\Programa├º├úo\Aracon
+\client\node_modules\tailwin
+dcss\dist\lib.js:3:1718)
+    at _ (C:\Users\phmor\Doc
+uments\Programa├º├úo\Aracon\
+client\node_modules\tailwind
+css\dist\lib.js:3:1377)
+    at un (C:\Users\phmor\Do
+cuments\Programa├º├úo\Aracon
+\client\node_modules\tailwin
+dcss\dist\lib.js:32:2712)
+    at async cn (C:\Users\ph
+mor\Documents\Programa├º├úo\
+Aracon\client\node_modules\t
+ailwindcss\dist\lib.js:38:63
+1)
+    at async Xr (C:\Users\ph
+mor\Documents\Programa├º├úo\
+Aracon\client\node_modules\@
+tailwindcss\node\dist\index.
+js:10:3417)
+    at async I (C:\Users\phm
+or\Documents\Programa├º├úo\A
+racon\client\node_modules\@t
+ailwindcss\postcss\dist\inde
+x.js:10:3977)
+    at async Object.Once (C:
+\Users\phmor\Documents\Progr
+ama├º├úo\Aracon\client\node_
+modules\@tailwindcss\postcss
+\dist\index.js:10:4249)
+    at async 
+LazyResult.runAsync (C:\User
+s\phmor\Documents\Programa├º
+├úo\Aracon\client\node_modul
+es\postcss\lib\lazy-result.j
+s:293:11)
+    at async runPostCSS (fil
+e:///C:/Users/phmor/Document
+s/Programa%C3%A7%C3%A3o/Arac
+on/client/node_modules/vite/
+dist/node/chunks/config.js:3
+0145:19)
+[32mÔ£ô[39m 42 modules transformed.
+[31mÔ£ù[39m Build failed 
+in 760ms
+[31merror during build:
+[31m[vite:css] [postcss] 
+tailwindcss: C:/Users/phmor/
+Documents/Programa├º├úo/Arac
+on/client/src/index.css:1:1:
+ The prefix "ma-" is 
+invalid. Prefixes must be 
+lowercase ASCII letters 
+(a-z) only.[31m
+file: [36mC:/Users/phmor/Do
+cuments/Programa├º├úo/Aracon
+/client/src/index.css:1:0[3
+1m
+    at Input.error (C:\Users
+\phmor\Documents\Programa├º├
+úo\Aracon\client\node_module
+s\postcss\lib\input.js:135:1
+6)
+    at Root.error (C:\Users\
+phmor\Documents\Programa├º├ú
+o\Aracon\client\node_modules
+\postcss\lib\node.js:146:32)
+    at Object.Once (C:\Users
+\phmor\Documents\Programa├º├
+úo\Aracon\client\node_module
+s\@tailwindcss\postcss\dist\
+index.js:10:6911)
+    at async 
+LazyResult.runAsync (C:\User
+s\phmor\Documents\Programa├º
+├úo\Aracon\client\node_modul
+es\postcss\lib\lazy-result.j
+s:293:11)
+    at async runPostCSS (fil
+e:///C:/Users/phmor/Document
+s/Programa%C3%A7%C3%A3o/Arac
+on/client/node_modules/vite/
+dist/node/chunks/config.js:3
+0145:19)
+    at async compilePostCSS 
+(file:///C:/Users/phmor/Docu
+ments/Programa%C3%A7%C3%A3o/
+Aracon/client/node_modules/v
+ite/dist/node/chunks/config.
+js:30129:6)
+    at async compileCSS (fil
+e:///C:/Users/phmor/Document
+s/Programa%C3%A7%C3%A3o/Arac
+on/client/node_modules/vite/
+dist/node/chunks/config.js:3
+0059:26)
+    at async Object.handler 
+(file:///C:/Users/phmor/Docu
+ments/Programa%C3%A7%C3%A3o/
+Aracon/client/node_modules/v
+ite/dist/node/chunks/config.
+js:29592:54)
+    at async transform (file
+:///C:/Users/phmor/Documents
+/Programa%C3%A7%C3%A3o/Araco
+n/client/node_modules/rollup
+/dist/es/shared/node-entry.j
+s:21283:16)
+    at async ModuleLoader.ad
+dModuleSource (file:///C:/Us
+ers/phmor/Documents/Programa
+%C3%A7%C3%A3o/Aracon/client/
+node_modules/rollup/dist/es/
+shared/node-entry.js:21497:3
+6)[39m
