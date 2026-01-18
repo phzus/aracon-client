@@ -1,0 +1,35 @@
+name: Deploy Aracon Widget CDN
+
+on:
+  push:
+    branches:
+      - master  # Dispara toda vez que você der push na master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install and Build 🏗️
+        run: |
+          npm install
+          npm run build
+        env:
+          # Variáveis de ambiente do Supabase
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
+      - name: Deploy to Branch 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # A pasta que o Vite gera
+          branch: production-cdn # A branch que a Vercel vai "ler"
+          clean: true # Remove arquivos antigos da branch de deploy
