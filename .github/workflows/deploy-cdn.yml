@@ -6,7 +6,7 @@ on:
       - master  # Dispara toda vez que você der push na master
 
 permissions:
-  contents: write  # Permite escrever/criar branches
+  contents: write  # Obrigatório para permitir que o Action crie/atualize a branch production-cdn
 
 jobs:
   build-and-deploy:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js ⚙️
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -26,13 +26,13 @@ jobs:
           npm install
           npm run build
         env:
-          # Variáveis de ambiente do Supabase
+          # Estas variáveis devem estar cadastradas em Settings > Secrets do GitHub
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
       - name: Deploy to Branch 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist # A pasta que o Vite gera
-          branch: production-cdn # A branch que a Vercel vai "ler"
-          clean: true # Remove arquivos antigos da branch de deploy
+          folder: dist # Pasta que o Vite gera na raiz do projeto
+          branch: production-cdn # Branch de destino que a Vercel vai ler
+          clean: true # Garante que a branch de destino tenha apenas os arquivos do último build
