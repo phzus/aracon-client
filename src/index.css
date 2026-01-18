@@ -49,7 +49,7 @@
 }
 
 /* Widget container reset - Helvetica Now as default */
-#app {
+#aracon-imoveis-widget {
   font-family: var(--font-helvetica);
   color: var(--ma-text);
   line-height: 1.5;

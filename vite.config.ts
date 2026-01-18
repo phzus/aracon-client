@@ -22,5 +22,6 @@ export default defineConfig({
     },
     cssCodeSplit: false,
     minify: 'terser',
+    cssMinify: 'esbuild', // Use esbuild for CSS minification (more compatible)
   },
 })
