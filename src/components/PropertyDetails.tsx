@@ -76,7 +76,7 @@ export function PropertyDetails({ id }: PropertyDetailsProps) {
   // Loading State
   if (loading) {
     return (
-      <div className="main-container ma:py-8">
+      <div className="main-container">
         <div className="skeleton ma:h-8 ma:w-32 ma:rounded ma:mb-6"></div>
         <div className="ma:grid ma:grid-cols-1 lg:ma:grid-cols-[2fr_1fr] ma:gap-8">
           <div className="ma:space-y-6">
@@ -98,7 +98,7 @@ export function PropertyDetails({ id }: PropertyDetailsProps) {
   // Error State
   if (error || !property) {
     return (
-      <div className="main-container ma:py-8">
+      <div className="main-container">
         <div className="ma:min-h-[400px] ma:flex ma:flex-col ma:items-center ma:justify-center ma:text-center ma:p-8 ma:bg-white ma:rounded-2xl ma:shadow-md">
           <div className="ma:w-16 ma:h-16 ma:mb-4 ma:text-red-400">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">

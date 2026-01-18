@@ -12,7 +12,7 @@ function App() {
   // If URL contains /imovel and has an id parameter, show property details
   if (path.includes('/imovel') && propertyId) {
     return (
-      <div className="ma:bg-slate-50 ma:min-h-screen">
+      <div>
         <PropertyDetails id={propertyId} />
       </div>
     );
@@ -21,7 +21,7 @@ function App() {
   // If URL contains /imoveis or is at root, show property grid
   if (path.includes('/imoveis') || path === '/') {
     return (
-      <div className="ma:bg-slate-50 ma:min-h-screen">
+      <div>
         <PropertyGrid />
       </div>
     );

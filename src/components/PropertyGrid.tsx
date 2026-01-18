@@ -31,7 +31,7 @@ export function PropertyGrid() {
   }
 
   return (
-    <div className="main-container ma:py-8">
+    <div className="main-container">
       {/* Header */}
 
 
