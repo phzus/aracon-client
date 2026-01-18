@@ -34,7 +34,7 @@ export function ImageGallery({ images, mainImage, title }: ImageGalleryProps) {
       {/* Main Gallery */}
       <div className="ma:space-y-4">
         {/* Main Image */}
-        <div className="ma:relative ma:overflow-hidden ma:rounded-2xl ma:bg-gray-100 gallery-main-image">
+        <div className="ma:relative ma:overflow-hidden ma:rounded-xl ma:bg-gray-100 gallery-main-image">
           <img
             src={currentImage}
             alt={`${title} - Imagem ${selectedIndex + 1}`}
