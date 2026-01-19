@@ -30,7 +30,7 @@
 }
 
 /* Custom properties for the widget */
-:root {
+:host, :root {
   --ma-primary: #1e40af;
   --ma-primary-hover: #1e3a8a;
   --ma-secondary: #64748b;
