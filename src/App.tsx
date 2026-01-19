@@ -1,6 +1,6 @@
 import { PropertyGrid } from './components/PropertyGrid';
 import { PropertyDetails } from './components/PropertyDetails';
-import './index.css';
+
 
 function App() {
   // Get current path and query params
