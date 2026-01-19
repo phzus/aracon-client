@@ -29,7 +29,7 @@ function App() {
 
   // Default: show property grid
   return (
-    <div className="ma:min-h-screen">
+    <div>
       <PropertyGrid />
     </div>
   );
