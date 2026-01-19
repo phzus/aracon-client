@@ -244,6 +244,21 @@
   cursor: pointer;
 }
 
+/* WhatsApp button - green gradient */
+.btn-whatsapp {
+  background: linear-gradient(120deg, #128C7E 20.07%, #25D366 98.98%);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(18, 140, 126, 0.2);
+  cursor: pointer;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(18, 140, 126, 0.3);
+  filter: brightness(1.1);
+  cursor: pointer;
+}
+
 /* Feature icons - golden color */
 .feature-icon {
   color: var(--ma-brand-gold);
