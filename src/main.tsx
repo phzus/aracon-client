@@ -3,6 +3,15 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import styles from './index.css?inline'
 
+// Inject Google Fonts into document head (outside Shadow DOM)
+// This ensures fonts are available globally for the Shadow DOM to use
+const fontLink = document.createElement('link');
+fontLink.rel = 'stylesheet';
+fontLink.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap';
+if (!document.head.querySelector('link[href*="Playfair+Display"]')) {
+  document.head.appendChild(fontLink);
+}
+
 // Find the widget container
 const container = document.getElementById('aracon-imoveis-widget');
 
