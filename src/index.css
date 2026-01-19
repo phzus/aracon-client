@@ -87,6 +87,35 @@
   --tw-contain-paint: ;
   --tw-contain-style: ;
 
+  /* Tailwind v4 transition variables */
+  --tw-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --tw-duration: 150ms;
+  --ma-default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --ma-default-transition-duration: 150ms;
+
+  /* Tailwind v4 border variables */
+  --tw-border-style: solid;
+
+  /* Tailwind v4 typography/spacing variables */
+  --tw-leading: 1.5;
+  --ma-spacing: 0.25rem;
+  --ma-text-xs: 0.75rem;
+  --ma-text-xs--line-height: 1rem;
+  --ma-text-sm: 0.875rem;
+  --ma-text-sm--line-height: 1.25rem;
+  --ma-text-base: 1rem;
+  --ma-text-base--line-height: 1.5rem;
+  --ma-text-lg: 1.125rem;
+  --ma-text-lg--line-height: 1.75rem;
+  --ma-text-xl: 1.25rem;
+  --ma-text-xl--line-height: 1.75rem;
+  --ma-text-2xl: 1.5rem;
+  --ma-text-2xl--line-height: 2rem;
+  --ma-text-3xl: 1.875rem;
+  --ma-text-3xl--line-height: 2.25rem;
+  --ma-text-4xl: 2.25rem;
+  --ma-text-4xl--line-height: 2.5rem;
+
   /* Custom properties for the widget */
   --ma-primary: #1e40af;
   --ma-primary-hover: #1e3a8a;
