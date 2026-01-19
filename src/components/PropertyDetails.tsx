@@ -272,7 +272,7 @@ export function PropertyDetails({ id }: PropertyDetailsProps) {
   };
 
   return (
-    <div className="main-container ma:py-5">
+    <div className="main-container">
       {/* Back Button */}
       <button
         onClick={goBack}
