@@ -63,7 +63,7 @@ export function PropertyFiltersComponent({ filters, onFilterChange, cities }: Pr
           <select
             value={filters.tipo || ''}
             onChange={handleTypeChange}
-            className="filter-select ma:flex-1 sm:ma:flex-none ma:px-4 ma:py-2.5 ma:border ma:border-gray-200 ma:rounded-lg ma:bg-gray-50 ma:text-gray-700 ma:text-sm focus:ma:outline-none focus:ma:ring-2 focus:ma:ring-blue-500 focus:ma:border-transparent ma:transition-all"
+            className="filter-select ma:flex-1 sm:ma:flex-none ma:px-3 sm:ma:px-4 ma:py-2.5 ma:border ma:border-gray-200 ma:rounded-lg ma:bg-gray-50 ma:text-gray-700 ma:text-[13px] sm:ma:text-sm focus:ma:outline-none focus:ma:ring-2 focus:ma:ring-blue-500 focus:ma:border-transparent ma:transition-all"
           >
             <option value="">Todos os tipos</option>
             <option value="venda">Venda</option>
@@ -74,7 +74,7 @@ export function PropertyFiltersComponent({ filters, onFilterChange, cities }: Pr
           <select
             value={filters.cidade || ''}
             onChange={handleCityChange}
-            className="filter-select ma:flex-1 sm:ma:flex-none ma:px-4 ma:py-2.5 ma:border ma:border-gray-200 ma:rounded-lg ma:bg-gray-50 ma:text-gray-700 ma:text-sm focus:ma:outline-none focus:ma:ring-2 focus:ma:ring-blue-500 focus:ma:border-transparent ma:transition-all"
+            className="filter-select ma:flex-1 sm:ma:flex-none ma:px-3 sm:ma:px-4 ma:py-2.5 ma:border ma:border-gray-200 ma:rounded-lg ma:bg-gray-50 ma:text-gray-700 ma:text-[13px] sm:ma:text-sm focus:ma:outline-none focus:ma:ring-2 focus:ma:ring-blue-500 focus:ma:border-transparent ma:transition-all"
           >
             <option value="">Todas as cidades</option>
             {cities.map(city => (
