@@ -244,11 +244,11 @@
   cursor: pointer;
 }
 
-/* WhatsApp button - green gradient */
+/* WhatsApp button - serious/luxurious green gradient */
 .btn-whatsapp {
-  background: linear-gradient(120deg, #128C7E 20.07%, #25D366 98.98%);
+  background: linear-gradient(120deg, #0c5224 20.07%, #148b53 98.98%);
   transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(18, 140, 126, 0.2);
+  box-shadow: 0 2px 4px rgba(7, 51, 41, 0.2);
   cursor: pointer;
 }
 
@@ -275,15 +275,24 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 640px) {
-  .gallery-main-image {
-    aspect-ratio: 4/3;
-  }
-}
 
-@media (min-width: 768px) {
-  .gallery-main-image {
-    aspect-ratio: 16/9;
+/* Mobile: Square gallery, no padding */
+/* Desktop (1024px+): 16/10 gallery with rounded corners, no section padding */
+@media (min-width: 1024px) {
+  /* Gallery aspect ratio on desktop */
+  .ma\:aspect-square.lg\:ma\:aspect-\[16\/10\] {
+    aspect-ratio: 16/10 !important;
+  }
+
+  /* Gallery rounded corners on desktop */
+  .ma\:rounded-none.lg\:ma\:rounded-lg {
+    border-radius: 0.5rem !important;
+  }
+
+  /* Remove section padding on desktop */
+  .ma\:px-5.lg\:ma\:px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
