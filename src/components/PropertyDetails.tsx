@@ -12,11 +12,20 @@ type TabType = 'descricao' | 'localizacao' | 'resumo';
 
 // Helper function to safely render any value as a string
 // Prevents React crash when Supabase returns objects/arrays instead of strings
-// Returns empty string for empty objects {} or empty arrays []
+// Returns empty string for empty objects {}, empty arrays [], or zero/empty values
 const safeString = (value: unknown): string => {
   if (value === null || value === undefined) return '';
-  if (typeof value === 'string') return value;
-  if (typeof value === 'number') return String(value);
+  if (typeof value === 'string') {
+    // Treat '0', '00', or whitespace-only strings as empty
+    const trimmed = value.trim();
+    if (trimmed === '' || trimmed === '0' || trimmed === '00') return '';
+    return trimmed;
+  }
+  if (typeof value === 'number') {
+    // Treat 0 as empty (indicates no data)
+    if (value === 0) return '';
+    return String(value);
+  }
   if (typeof value === 'object') {
     // Check if it's an empty object or empty array
     if (Array.isArray(value) && value.length === 0) return '';
@@ -173,84 +182,48 @@ export function PropertyDetails({ id }: PropertyDetailsProps) {
           </div>
         );
       case 'resumo':
-        const hasResumoData = (property.area_total && property.area_total > 0) ||
-                              (property.dormitorios && property.dormitorios > 0) ||
-                              (property.banheiros && property.banheiros > 0) ||
-                              property.vagas_garagem || property.vagas ||
-                              property.resumo_caracteristicas ||
-                              (property.caracteristicas && property.caracteristicas.length > 0);
+        // Build array of characteristics that have values
+        const caracteristicasResumo: { label: string; value: string }[] = [];
+
+        if (property.area_util && property.area_util > 0) {
+          caracteristicasResumo.push({ label: 'Área Útil', value: `${property.area_util}m²` });
+        }
+        if (property.area_total && property.area_total > 0) {
+          caracteristicasResumo.push({ label: 'Área Total', value: `${property.area_total}m²` });
+        }
+        if (property.dormitorios && property.dormitorios > 0) {
+          caracteristicasResumo.push({ label: 'Dormitórios', value: String(property.dormitorios) });
+        }
+        if (property.suites && property.suites > 0) {
+          caracteristicasResumo.push({ label: 'Suítes', value: String(property.suites) });
+        }
+        if (property.banheiros && property.banheiros > 0) {
+          caracteristicasResumo.push({ label: 'Banheiros', value: String(property.banheiros) });
+        }
+        const vagasTotal = property.vagas_garagem ?? property.vagas ?? 0;
+        if (vagasTotal > 0) {
+          caracteristicasResumo.push({ label: 'Vagas Garagem', value: String(vagasTotal) });
+        }
+        if (property.pavimentos && property.pavimentos > 0) {
+          caracteristicasResumo.push({ label: 'Pavimentos', value: String(property.pavimentos) });
+        }
+        if (property.ano_construcao && property.ano_construcao > 0) {
+          caracteristicasResumo.push({ label: 'Ano Construção', value: String(property.ano_construcao) });
+        }
+
+        // If no characteristics have values, return empty/nothing
+        if (caracteristicasResumo.length === 0) {
+          return null;
+        }
+
         return (
-          <div className="ma:space-y-8">
-            {/* Quick stats */}
-            <div className="ma:grid ma:grid-cols-2 sm:ma:grid-cols-4 ma:gap-3">
-              {property.area_total && property.area_total > 0 && (
-                <div className="ma:bg-gray-50 ma:rounded-lg ma:p-3 ma:text-center">
-                  <div className="ma:text-lg ma:font-bold ma:text-gray-900">{property.area_total}m²</div>
-                  <div className="ma:text-xs ma:text-gray-500">Área Total</div>
-                </div>
-              )}
-              {property.dormitorios && property.dormitorios > 0 && (
-                <div className="ma:bg-gray-50 ma:rounded-lg ma:p-3 ma:text-center">
-                  <div className="ma:text-lg ma:font-bold ma:text-gray-900">{property.dormitorios}</div>
-                  <div className="ma:text-xs ma:text-gray-500">{property.dormitorios === 1 ? 'Quarto' : 'Quartos'}</div>
-                </div>
-              )}
-              {property.banheiros && property.banheiros > 0 && (
-                <div className="ma:bg-gray-50 ma:rounded-lg ma:p-3 ma:text-center">
-                  <div className="ma:text-lg ma:font-bold ma:text-gray-900">{property.banheiros}</div>
-                  <div className="ma:text-xs ma:text-gray-500">{property.banheiros === 1 ? 'Banheiro' : 'Banheiros'}</div>
-                </div>
-              )}
-              {(() => {
-                const vagas = property.vagas_garagem ?? property.vagas ?? 0;
-                if (vagas > 0) {
-                  return (
-                    <div className="ma:bg-gray-50 ma:rounded-lg ma:p-3 ma:text-center">
-                      <div className="ma:text-lg ma:font-bold ma:text-gray-900">{vagas}</div>
-                      <div className="ma:text-xs ma:text-gray-500">{vagas === 1 ? 'Vaga' : 'Vagas'}</div>
-                    </div>
-                  );
-                }
-                return null;
-              })()}
-            </div>
-            {/* Resumo text - render JSONB content properly */}
-            {hasContent(property.resumo_caracteristicas) && (
-              <div className="ma:space-y-2">
-                {typeof property.resumo_caracteristicas === 'object' && !Array.isArray(property.resumo_caracteristicas) ? (
-                  // If it's an object, render each key-value pair
-                  Object.entries(property.resumo_caracteristicas as Record<string, unknown>)
-                    .filter(([, val]) => val && safeString(val))
-                    .map(([key, val]) => (
-                      <div key={key} className="ma:flex ma:items-start ma:gap-3">
-                        <span className="ma:font-medium ma:text-gray-700 ma:min-w-[120px] ma:capitalize">{key.replace(/_/g, ' ')}:</span>
-                        <span className="ma:text-gray-600">{safeString(val)}</span>
-                      </div>
-                    ))
-                ) : (
-                  // If it's a string or other type, render as text
-                  <div className="ma:text-gray-600 ma:leading-relaxed">
-                    {safeString(property.resumo_caracteristicas)}
-                  </div>
-                )}
+          <div className="ma:grid ma:grid-cols-2 sm:ma:grid-cols-3 lg:ma:grid-cols-4 ma:gap-4">
+            {caracteristicasResumo.map((item, index) => (
+              <div key={index} className="ma:bg-gray-50 ma:rounded-lg ma:p-4 ma:text-center">
+                <div className="ma:text-xl ma:font-bold ma:text-gray-900">{item.value}</div>
+                <div className="ma:text-sm ma:text-gray-500">{item.label}</div>
               </div>
-            )}
-            {/* Features list */}
-            {Array.isArray(property.caracteristicas) && property.caracteristicas.length > 0 && (
-              <div className="ma:flex ma:flex-wrap ma:gap-2 ma:mt-4">
-                {property.caracteristicas.map((feature, index) => (
-                  <span
-                    key={index}
-                    className="ma:px-3 ma:py-1 ma:bg-gray-100 ma:text-gray-700 ma:rounded-full ma:text-sm"
-                  >
-                    {safeString(feature)}
-                  </span>
-                ))}
-              </div>
-            )}
-            {!hasResumoData && (
-              <p className="ma:text-gray-500 ma:italic">Resumo não disponível para este imóvel.</p>
-            )}
+            ))}
           </div>
         );
       default:

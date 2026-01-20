@@ -15,11 +15,14 @@ export interface Property {
   area_util?: number;
   area_total?: number;
   dormitorios?: number;
+  suites?: number;
   banheiros?: number;
   vagas?: number;
   vagas_garagem?: number;
+  pavimentos?: number;
+  ano_construcao?: number;
   imagens?: string[];
-  imagem_principal?: string; // Mantendo para compatibilidade, mas o correto é usar imagens[0]
+  imagem_principal?: string;
   galeria_imagens?: string[];
   caracteristicas?: string[];
   caracteristicas_detalhadas?: { icone: string; texto: string }[];
