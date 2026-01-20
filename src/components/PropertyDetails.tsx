@@ -274,15 +274,17 @@ export function PropertyDetails({ id }: PropertyDetailsProps) {
   return (
     <div className="main-container">
       {/* Back Button */}
-      <button
-        onClick={goBack}
-        className="ma:flex ma:items-center ma:gap-2 ma:text-gray-600 hover:ma:text-gray-900 ma:mb-5 ma:transition-colors ma:cursor-pointer"
-      >
-        <svg className="ma:w-5 ma:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        <span className="ma:font-medium">Voltar</span>
-      </button>
+      <div className="ma:px-5 sm:ma:px-0">
+        <button
+          onClick={goBack}
+          className="ma:flex ma:items-center ma:gap-2 ma:text-gray-600 hover:ma:text-gray-900 ma:mb-5 ma:transition-colors ma:cursor-pointer"
+        >
+          <svg className="ma:w-5 ma:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span className="ma:font-medium">Voltar</span>
+        </button>
+      </div>
 
       {/* Main Content - Two Columns */}
       <div className="property-details-layout">
@@ -294,7 +296,7 @@ export function PropertyDetails({ id }: PropertyDetailsProps) {
           <SyncedGallery images={images} title={property.titulo} />
 
           {/* Mobile Info Card - Oculto no desktop */}
-          <div className="mobile-info-card">
+          <div className="mobile-info-card ma:px-5 sm:ma:px-0">
             <div className="property-details-sticky ma:space-y-5">
               {/* Status Badge */}
               <span className="ma:inline-block ma:px-3 ma:py-1 ma:font-regular ma:text-gray-800 ma:uppercase ma:tracking-wide ma:text-[13px] ma:rounded-sm" style={{ backgroundColor: '#e5e7eb' }}>
@@ -347,7 +349,7 @@ export function PropertyDetails({ id }: PropertyDetailsProps) {
           </div>
 
           {/* Section 2: Tabs "Sobre o Imóvel" */}
-          <div>
+          <div className="ma:px-5 sm:ma:px-0">
             <h2 className="section-title ma:mb-6">Sobre o Imóvel</h2>
             {/* Tab Headers */}
             <div className="ma:flex ma:border-b ma:border-gray-300">
@@ -378,7 +380,7 @@ export function PropertyDetails({ id }: PropertyDetailsProps) {
 
           {/* Section 3: Detailed Features Grid */}
           {property.caracteristicas_detalhadas && property.caracteristicas_detalhadas.length > 0 && (
-            <div>
+            <div className="ma:px-5 sm:ma:px-0">
               <h2 className="section-title ma:mb-6">Características do Imóvel</h2>
               <div className="features-grid">
                 {property.caracteristicas_detalhadas.map((feature, index) => (

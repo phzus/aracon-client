@@ -372,10 +372,18 @@
 
 .property-details-sticky {
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 30px;
+  padding: 20px 0; /* No lateral padding on mobile */
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .property-details-sticky {
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    margin-bottom: 0;
+  }
 }
 
 /* Feature icon container - dourado claro com opacidade */
@@ -392,7 +400,7 @@
 .features-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 0.6rem;
 }
 
 @media (min-width: 640px) {

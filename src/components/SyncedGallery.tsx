@@ -57,24 +57,24 @@ export default function SyncedGallery({ images, title }: SyncedGalleryProps) {
 
   if (!images || images.length === 0) {
     return (
-      <div className="ma:aspect-[16/10] ma:bg-gray-100 ma:rounded-2xl ma:flex ma:items-center ma:justify-center">
+      <div className="ma:aspect-square sm:ma:aspect-[16/10] ma:bg-gray-100 ma:rounded-2xl ma:flex ma:items-center ma:justify-center">
         <span className="ma:text-gray-400">Sem imagens disponíveis</span>
       </div>
     );
   }
 
   return (
-    <div className="ma:space-y-4" style={{ paddingBottom: '40px' }}>
+    <div className="ma:space-y-4 ma:pb-0 sm:ma:pb-10">
       {/* Main Carousel */}
       <div className="ma:relative">
-        <div className="ma:overflow-hidden ma:rounded-2xl" ref={mainRef}>
+        <div className="ma:overflow-hidden ma:rounded-none sm:ma:rounded-2xl" ref={mainRef}>
           <div className="ma:flex">
             {images.map((image, index) => (
               <div
                 key={index}
                 className="ma:flex-[0_0_100%] ma:min-w-0"
               >
-                <div className="ma:aspect-[16/10] ma:bg-gray-100">
+                <div className="ma:aspect-square sm:ma:aspect-[16/10] ma:bg-gray-100">
                   <img
                     src={image}
                     alt={`${title} - Imagem ${index + 1}`}
@@ -113,7 +113,7 @@ export default function SyncedGallery({ images, title }: SyncedGalleryProps) {
 
       {/* Thumbnail Carousel */}
       {images.length > 1 && (
-        <div className="ma:overflow-hidden" ref={thumbRef}>
+        <div className="ma:overflow-hidden ma:px-5 sm:ma:px-0" ref={thumbRef}>
           <div className="ma:flex ma:gap-2">
             {images.map((image, index) => (
               <button
